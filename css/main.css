@@ -1,0 +1,25 @@
+#monitor {
+    display: flex;
+    border: 1px solid #000;
+    margin: 20px auto;
+}
+
+#viz {
+    margin: 0 auto;
+    /* border: 1px solid rgb(156, 33, 33); */
+    width: 300px;
+    height: 300px;
+}
+
+.title {
+    text-align: center;
+}
+
+.result {
+    margin: 0 auto;
+    padding: 1px;
+    text-align: center;
+    background-color: #085555;
+    color: white;
+    font-size: 24px;
+}
