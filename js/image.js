@@ -70,7 +70,12 @@ function countStars() {
             let intensity = binarizedImg.getIntComponent0(i, j);
             if(intensity == 255) {
                 cont += 1;
-                explore(i, j, height, width);
+                try {
+                    explore(i, j, height, width, cont);
+                }
+                catch (e) {
+                    //console.log(e);
+                }
             }
         }
     }
@@ -90,10 +95,10 @@ function explore(i, j, height, width) {
         i, j, binarizedImg.getAlphaComponent(i, j), 0, 0, 0
     );
 
-    // left
-    explore(i, j-1, height, width);
     // right
     explore(i, j+1, height, width);
+    // left
+    explore(i, j-1, height, width);
     // up
     explore(i-1, j, height, width);
     // down
