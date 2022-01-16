@@ -2,6 +2,7 @@
 <html lang="es" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Contando estrellas</title>
 
         <link rel="stylesheet" href="css/main.css">
@@ -9,15 +10,35 @@
         <script src="https://www.marvinj.org/releases/marvinj-0.9.js"></script>
     </head>
     <body>
-        <h1 class="title">Contando estrellas</h1>
-        <div class="" id="monitor">
-            <canvas id="viz"></canvas>
+        <header>
+            <h1 class="title">Contando estrellas</h1>
+        </header>
+
+        <div class="upload-region">
+            <div id="uploadedImage" onclick="selectImage();">
+                <span id="tagUploadPhoto">Sube una foto</span>
+                <img id="starImage">
+            </div>
+
+            <input id="inputImg" class="hidden-upload"
+            accept="image/x-png,image/jpeg" type="file">
+
+            <button class="clear-btn" type="button" name="button" onclick="reset();">
+                Clear
+            </button>
         </div>
 
         <div class="result">
-            <p id="number-stars">ND</p>
+            <p id="number-stars"></p>
         </div>
 
+        <footer class="">
+            <p>Desarrollado por 
+                <a href="https://twitter.com/dabetm" target="_blank">David +)</a>
+            </p>
+        </footer>
+
         <script src="js/app.js" charset="utf-8"></script>
+        <script src="js/image.js" charset="utf-8"></script>
     </body>
 </html>

@@ -1,92 +1,61 @@
-var canvas = document.getElementById("viz")
-var inputImg = new MarvinImage();
-var scaledImg = new MarvinImage();
-var grayImg;
-var binarizedImg;
-var totalStars = 0;
+var inputImg = document.getElementById("inputImg");
+var previewImg = document.getElementById("starImage");
 
-inputImg.load("assets/img/starry_1.jpg", function() {
-    Marvin.scale(inputImg, scaledImg, 200, 200);
-    scaledImg.draw(canvas);
-    // console.log(inputImg.getWidth(), inputImg.getHeight());
-    grayImg = new MarvinImage(scaledImg.getWidth(), scaledImg.getHeight());
-    toGrayScale();
-    binarizedImg = new MarvinImage(scaledImg.getWidth(), scaledImg.getHeight());
-    binarizeImg();
-    //binarizedImg.draw(canvas);
-    // iterateImage();
-    countStars();
-    //binarizedImg.draw(canvas);
-    console.log("listo!");
+inputImg.onchange = event => {
+    const [file] = inputImg.files
+    if (file) {
+        url = URL.createObjectURL(file);
+        renderPreview(url);
+        processImage(url);
+    }
+}
+
+function renderPreview(url) {
+    previewImg.src = url;
+    document.getElementById("tagUploadPhoto").style.display = "none";
+
+    toggleRegionImage(false);
+}
+
+function renderResult(total) {
+    let divResult = document.getElementsByClassName("result")[0];
+    divResult.style.display = "block";
+
     let result = document.getElementById("number-stars");
-    console.log(result);
-    result.innerHTML = totalStars;
-});
-
-
-function toGrayScale() {
-    Marvin.grayScale(scaledImg, grayImg);
-    // grayImg.draw(canvas);
+    result.innerHTML = "Hay " + total + " estrellas";
 }
 
-function binarizeImg(){
-    Marvin.thresholding(grayImg, binarizedImg, 80);
+function selectImage() {
+    inputImg.click();
 }
 
-function iterateImage() {
-    let height = binarizedImg.getHeight();
-    let width = binarizedImg.getWidth();
+function reset() {
+    // remove current image
+    previewImg.src = "";
+    document.getElementById("tagUploadPhoto").style.display = "block";
 
-    for(let i = 0; i < height; ++i) {
-        for(let j = 0; j < width; ++j) {
-            let intensity = binarizedImg.getIntComponent0(i, j);
-            if(intensity == 255) {
-                console.log(intensity);
-                /*
-                binarizedImg.setIntColor(
-                    i, j, binarizedImg.getAlphaComponent(i, j), 0, 0, 0
-                );
-                */
-            }
-        }
-        console.log("")
-    }
-    console.log("listo");
+    // hide the latest result
+    let divResult = document.getElementsByClassName("result")[0];
+    divResult.style.display = "none";
+
+    // remove value of input file
+    inputImg.value = "";
+
+    toggleRegionImage(true);
 }
 
-function countStars() {
-    let height = binarizedImg.getHeight();
-    let width = binarizedImg.getWidth();
-
-    for(let i = 0; i < height; ++i) {
-        for(let j = 0; j < width; ++j) {
-            let intensity = binarizedImg.getIntComponent0(i, j);
-            if(intensity == 255) {
-                totalStars += 1;
-                explore(i, j, height, width);
-            }
-        }
+function toggleRegionImage(setup) {
+    let region = document.getElementById("uploadedImage");
+    if(setup) {
+        // add dash border
+        region.style.border = "3px dashed #98103d";
+        // add background
+        region.style.backgroundColor = "#dadada";
     }
-}
-
-function explore(i, j, height, width) {
-    if(i >= height || i < 0 || j >= width || j < 0) {
-        return;
+    else {
+        // remove dash border
+        region.style.border = "none";
+        // remove background
+        region.style.backgroundColor = "transparent";
     }
-    if(binarizedImg.getIntComponent0(i, j) == 0) {
-        return;
-    }
-
-    binarizedImg.setIntColor(
-        i, j, binarizedImg.getAlphaComponent(i, j), 0, 0, 0
-    );
-
-    // left
-    explore(i, j-1, height, width);
-    // right
-    explore(i, j+1, height, width);
-    // up
-    explore(i-1, j, height, width);
-    // down
-    explore(i+1, j, height, width);
 }
