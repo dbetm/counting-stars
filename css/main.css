@@ -61,13 +61,13 @@ header {
     height: 300px;
     border: 3px dashed #98103d;
     border-radius: 6px;
-    background-color: #dadada;
+    background-color: #e2dfdf;
     cursor: pointer;
 }
 
 #tagUploadPhoto {
     font-size: 34px;
-    color: #737373;
+    color: #0a6c6c;
     line-height: 300px;
 }
 
@@ -83,8 +83,8 @@ footer {
     bottom: 0px;
     width: 100%;
     background-color: #085555;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 footer p {
