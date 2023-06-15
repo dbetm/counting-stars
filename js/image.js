@@ -3,7 +3,7 @@ var scaledImg = new MarvinImage();
 var grayImg;
 var binarizedImg;
 const thresholdDim = 500;
-const binarizeThreshold = [80, 96, 115];
+const binarizeThreshold = [80, 93, 114];
 
 
 function processImage(url) {
