@@ -21,7 +21,7 @@ A simple web app for counting stars ⭐⭐⭐
 
 ![](assets/img/demo_1.png)
 
-**You can see the result, click at _Limpiar_ to try with another photo**
+**You can see the result, click at _Clear_ to try with another photo**
 
 ![](assets/img/demo_2.png)
 
