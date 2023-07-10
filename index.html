@@ -3,20 +3,23 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Contando estrellas</title>
-
+        <title>Counting stars</title>
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <!-- CSS -->
         <link rel="stylesheet" href="css/main.css">
 
         <script src="https://www.marvinj.org/releases/marvinj-0.9.js"></script>
     </head>
     <body>
         <header>
-            <h2 class="title">Contando estrellas</h2>
+            <h2 class="title">Counting stars</h2>
         </header>
 
         <div class="upload-region">
             <div id="uploadedImage" onclick="selectImage();">
-                <span id="tagUploadPhoto">Sube una foto</span>
+                <span id="tagUploadPhoto">upload a photo</span>
                 <img id="starImage">
             </div>
 
@@ -24,7 +27,7 @@
             accept="image/x-png,image/jpeg" type="file">
 
             <button class="clear-btn" type="button" name="button" onclick="reset();">
-                Limpiar
+                Clear
             </button>
         </div>
 
@@ -34,12 +37,16 @@
 
         <footer class="">
             <p>
-                <a href="https://twitter.com/dabetm" target="_blank">+) dabetm</a> ⭐
-                <a href="https://github.com/dbetm/counting-stars" target="_blank">GitHub</a>
+                <span id="eeg" onclick="trick();">⭐</span>
+                <span id="counterEgg">+)</span> 
+                <a href="https://github.com/dbetm/counting-stars" target="_blank">
+                    How does it work?
+                </a>
             </p>
         </footer>
 
         <script src="js/app.js" charset="utf-8"></script>
         <script src="js/image.js" charset="utf-8"></script>
+        <script src="js/easter_egg.js" charset="utf-8"></script>
     </body>
 </html>

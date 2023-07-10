@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: #242424;
+    background-color: #171616;
     color: white;
     overflow-y: scroll;
 }
@@ -22,6 +22,7 @@ header {
     text-align: center;
     font-size: 1.8em;
     margin: 0px 15px;
+    font-family: Arial, sans-serif;
 }
 
 .result {
@@ -44,9 +45,16 @@ header {
 }
 
 .clear-btn {
-    margin: 7px auto;
+    margin: 20px 14px 7px 7px;
     font-size: 1.2em;
     cursor: pointer;
+    display: inline-block;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 3px;
+    background-color: #0275d8;
+    color: #ffffff; /*white */
+    font-family: Arial, sans-serif;
 }
 
 #inputImg {
@@ -57,16 +65,16 @@ header {
 #uploadedImage {
     margin: 0 auto;
     padding: 2px;
-    width: 80%;
-    height: 300px;
-    border: 3px dashed #98103d;
+    width: 75%;
+    height: 280px;
+    border: 3px dashed #9f9f9f;
     border-radius: 6px;
-    background-color: #e2dfdf;
+    background-color: #f0f0f0;
     cursor: pointer;
 }
 
 #tagUploadPhoto {
-    font-size: 34px;
+    font-size: 1.8em;
     color: #0a6c6c;
     line-height: 300px;
 }
@@ -94,4 +102,8 @@ footer p {
 
 footer a {
     color: white !important;
+}
+
+#eeg {
+    cursor: pointer;
 }
