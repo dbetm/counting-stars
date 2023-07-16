@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+assets/testing/*.png
+assets/testing/*.jpg
+assets/testing/*.jpeg
