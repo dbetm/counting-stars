@@ -22,7 +22,13 @@ function renderResult(total) {
     divResult.style.display = "block";
 
     let result = document.getElementById("number-stars");
-    result.innerHTML = "Hay " + total + " estrellas";
+
+    if(result == 1) {
+        "There is " + total + " star";
+    }
+    else {
+        result.innerHTML = "There are " + total + " stars";
+    }
 }
 
 function selectImage() {
