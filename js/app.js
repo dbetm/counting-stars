@@ -54,9 +54,9 @@ function toggleRegionImage(setup) {
     let region = document.getElementById("uploadedImage");
     if(setup) {
         // add dash border
-        region.style.border = "3px dashed #98103d";
+        region.style.border = "3px dashed #9f9f9f";
         // add background
-        region.style.backgroundColor = "#dadada";
+        region.style.backgroundColor = "#f0f0f0";
     }
     else {
         // remove dash border

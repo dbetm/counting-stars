@@ -54,12 +54,12 @@ def get_type_star() -> int:
 
 
 def gen_starry_night(saving_path: str):
-    width = 400
-    height = 400
+    width = 600
+    height = 600
 
     base_img = gen_base_img(width, height)
 
-    num_stars = random.randint(a=3, b=200)
+    num_stars = random.randint(a=200, b=1200)
     print(f"trying to put {num_stars} stars")
     total_stars = 0
 
