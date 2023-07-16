@@ -3,7 +3,7 @@ var scaledImg = new MarvinImage();
 var grayImg;
 var binarizedImg;
 const thresholdDim = 500;
-const binarizeThreshold = [80, 93, 114];
+const binarizeThreshold = [56, 58, 65];
 
 
 function processImage(url) {
@@ -28,10 +28,12 @@ function processImage(url) {
             binarizeImg(binarizeThreshold[i]);
 
             let result = countStars();
+            // console.log(result);
+
             totalStars += result;
             binarizedImg = null;
         }
-        renderResult(Math.floor(totalStars / m));
+        renderResult(Math.ceil(totalStars / m));
     });
 }
 
@@ -73,7 +75,7 @@ function countStars() {
                     explore(x, y);
                 }
                 catch (e) {
-                    // console.log("Error", e);
+                    console.log("Error", e);
                 }
             }
         }
