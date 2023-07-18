@@ -2,8 +2,8 @@ var image = new MarvinImage();
 var scaledImg = new MarvinImage();
 var grayImg;
 var binarizedImg;
-const thresholdDim = 500;
-const binarizeThreshold = [56, 58, 65];
+const thresholdDim = 400;
+const binarizeThreshold = [55, 56, 58, 65];
 
 
 function processImage(url) {
@@ -28,7 +28,7 @@ function processImage(url) {
             binarizeImg(binarizeThreshold[i]);
 
             let result = countStars();
-            // console.log(result);
+            console.log(result);
 
             totalStars += result;
             binarizedImg = null;
@@ -85,21 +85,27 @@ function countStars() {
 }
 
 function explore(x, y) {
-    if(!binarizedImg.isValidPosition(x, y)) {
-        return;
-    }
-    if(!binarizedImg.getIntComponent0(x, y)) {
-        return;
-    }
+    let stack = [[x, y]];
 
-    binarizedImg.setIntColor(x, y, 0, 0, 0);
+    while(stack.length > 0) {
+        let [x, y] = stack.pop();
 
-    // right
-    explore(x+1, y);
-    // left
-    explore(x-1, y);
-    // down
-    explore(x, y+1);
-    // up
-    explore(x, y-1);
+        if(!binarizedImg.isValidPosition(x, y)) {
+            continue;
+        }
+        if(binarizedImg.getIntComponent0(x, y) == 0) {
+            continue;
+        }
+
+        binarizedImg.setIntColor(x, y, 0, 0, 0);
+
+        // right
+        stack.push([x+1, y]);
+        // left
+        stack.push([x-1, y]);
+        // down
+        stack.push([x, y+1]);
+        // up
+        stack.push([x, y-1]);
+    }
 }
